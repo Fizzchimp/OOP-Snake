@@ -1,6 +1,5 @@
 import turtle
 
-
 class Window:
 
   def __init__(self, width, height):
