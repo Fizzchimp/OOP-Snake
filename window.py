@@ -16,5 +16,5 @@ class Window:
     self.hud.color("white")
     self.hud.penup()
     self.hud.hideturtle()
-    self.hud.goto(0, -390)
+    self.hud.goto(0, -340)
     self.hud.write("Current Score: %d     High Score: %d" %(score, highScore), align = "center", font = ("Courier", 22, "normal"))

@@ -1,6 +1,6 @@
 import turtle, random
 import time
-
+width = height = 720
 
 class Snake:
 
@@ -80,20 +80,20 @@ class Snake:
     self.snakeBody = []
 
   def sideSwap(self):
-    if self.snakeHead.xcor() > 400:
-      self.snakeHead.goto(-400, self.snakeHead.ycor())
+    if self.snakeHead.xcor() > width / 2:
+      self.snakeHead.goto(-width / 2, self.snakeHead.ycor())
       self.snakeHead.direction = "right"
 
-    elif self.snakeHead.xcor() < -400:
-      self.snakeHead.goto(400, self.snakeHead.ycor())
+    elif self.snakeHead.xcor() < -width / 2:
+      self.snakeHead.goto(width / 2, self.snakeHead.ycor())
       self.snakeHead.direction = "left"
 
-    if self.snakeHead.ycor() > 400:
-      self.snakeHead.goto(self.snakeHead.xcor(), -400)
+    if self.snakeHead.ycor() > height / 2:
+      self.snakeHead.goto(self.snakeHead.xcor(), -height / 2)
       self.snakeHead.direction = "up"
 
-    elif self.snakeHead.ycor() < -400:
-      self.snakeHead.goto(self.snakeHead.xcor(), 400)
+    elif self.snakeHead.ycor() < -height / 2:
+      self.snakeHead.goto(self.snakeHead.xcor(), height / 2)
       self.snakeHead.direction = "down"
 
 
@@ -113,20 +113,19 @@ class Food:
     self.move = decision
 
   def relocate(self):
-    x = random.randint(-18, 18)
-    y = random.randint(-18, 18)
+    x = random.randint((-width // 40) + 1, (width // 40 - 1))
+    y = random.randint((-height // 40 + 1), (height // 40 - 1))
     self.item.goto(20 * x, 20 * y)
 
 
 class Wall:
   def __init__(self):
-    self.wall = []
     self.item = turtle.Turtle()
     self.item.speed(0)
     self.item.shape("square")
-    self.item.color("white")
+    self.item.color("slate gray")
     self.item.penup()
-    x = random.randint(-18, 18)
-    y = random.randint(-18, 18)
-    self.item.goto(x * 20, y * 20)
+    x = random.randint((-width // 40) + 1, (width // 40 - 1))
+    y = random.randint((-height // 40 + 1), (height // 40 - 1))
+    self.item.goto(20 * x, 20 * y)
   

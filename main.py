@@ -2,7 +2,7 @@ from window import *
 from objects import *
 import time
 
-HEIGHT = WIDTH = 800
+HEIGHT = WIDTH = 720
 
 class Game:
 
@@ -26,6 +26,8 @@ class Game:
     time.sleep(1)
     self.snake.die()
     self.playerScore = 0
+    for part in self.wall:
+      del part.item
   
   
 
@@ -43,7 +45,7 @@ class Game:
       self.playerScore += 1
     
     for wall in self.wall:
-        if self.snake.snakeHead.distance(wall) < 15:
+        if self.snake.snakeHead.distance(wall.item) < 15:
             self.die()
       
 
