@@ -116,3 +116,17 @@ class Food:
     x = random.randint(-18, 18)
     y = random.randint(-18, 18)
     self.item.goto(20 * x, 20 * y)
+
+
+class Wall:
+  def __init__(self):
+    self.wall = []
+    self.item = turtle.Turtle()
+    self.item.speed(0)
+    self.item.shape("square")
+    self.item.color("white")
+    self.item.penup()
+    x = random.randint(-18, 18)
+    y = random.randint(-18, 18)
+    self.item.goto(x * 20, y * 20)
+  

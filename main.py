@@ -9,6 +9,7 @@ class Game:
   def __init__(self):
 
     self.window = Window(WIDTH, HEIGHT)
+    self.wall = []
     self.snake = Snake()
     self.food = Food()
     self.playerScore = 0
@@ -20,19 +21,30 @@ class Game:
     self.window.screen.onkey(self.snake.go_down, "Down")
     self.window.screen.onkey(self.snake.go_left, "Left")
     self.window.screen.onkey(self.snake.go_right, "Right")
+
+  def die(self):
+    time.sleep(1)
+    self.snake.die()
+    self.playerScore = 0
   
+  
+
+
+
   def worldUpdate(self):
     
     if self.snake.bodyColCheck() == True:
-      time.sleep(1)
-      self.snake.die()
-      self.playerScore = 0
+      self.die()
       
     if self.snake.snakeHead.distance(self.food.item) < 15:
+      self.wall.append(Wall())
       self.food.relocate()
       self.snake.grow()
       self.playerScore += 1
-
+    
+    for wall in self.wall:
+        if self.snake.snakeHead.distance(wall) < 15:
+            self.die()
       
 
 
