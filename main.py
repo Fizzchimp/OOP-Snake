@@ -26,9 +26,11 @@ class Game:
     time.sleep(1)
     self.snake.die()
     self.playerScore = 0
-    for part in self.wall:
-      del part.item
-  
+    while self.wall != []:
+      self.wall[0].destroy()
+      self.wall.pop(0)
+    self.wall = []
+    self.food.item.goto(0, 0)
   
 
 

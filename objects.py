@@ -103,7 +103,7 @@ class Food:
     self.item = turtle.Turtle()
     self.item.speed(0)
     self.item.shape("circle")
-    self.item.color("red")
+    self.item.color("crimson")
     self.item.penup()
     self.item.shapesize(0.5, 0.5)
     self.item.goto(0, 0)
@@ -129,3 +129,6 @@ class Wall:
     y = random.randint((-height // 40 + 1), (height // 40 - 1))
     self.item.goto(20 * x, 20 * y)
   
+  def destroy(self):
+    self.item.goto(1000, 1000)
+    del self.item
