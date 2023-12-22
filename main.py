@@ -31,6 +31,7 @@ class Game:
       self.wall.pop(0)
     self.wall = []
     self.food.item.goto(0, 0)
+    writeScore(userName, self.highScore)
   
 
 
@@ -58,6 +59,7 @@ class Game:
 
 
 
+
 def runGame(self):
   while True:
     self.window.screen.update()
@@ -71,19 +73,27 @@ def runGame(self):
     time.sleep(0.1)
 
 
-def writeScore()
+def writeScore(name, score):
+   if name == "":
+      return
+   dict[name] = score
+   with open("scores.txt", "w") as file:
+    for x in dict.keys():
+        file.write(x + ":" + str(dict[x]) + "\n")
 
 
 dict= {}
 with open("scores.txt", "r") as file:
     for x in file.readlines():
         x = x.split(":")
-        dict[x[0]] = x[1]
+        dict[x[0]] = x[1].strip()
 
 
-userName = input("Enter username here\n: ").strip(" ")
+userName = input("Enter username here\n: ").strip(" ").lower()
 
 if userName == "":
     highScore = 0
+else:
+   highScore = (dict[userName] if userName in dict else 0)
 
-#runGame(Game(highScore))
+runGame(Game(int(highScore)))
