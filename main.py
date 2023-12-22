@@ -6,14 +6,14 @@ HEIGHT = WIDTH = 720
 
 class Game:
 
-  def __init__(self):
+  def __init__(self, highScore):
 
     self.window = Window(WIDTH, HEIGHT)
     self.wall = []
     self.snake = Snake()
     self.food = Food()
     self.playerScore = 0
-    self.highScore = 0
+    self.highScore = highScore
 
   def keyBoardListener(self):
     self.window.screen.listen()
@@ -71,6 +71,19 @@ def runGame(self):
     time.sleep(0.1)
 
 
+def writeScore()
 
 
-runGame(Game())
+dict= {}
+with open("scores.txt", "r") as file:
+    for x in file.readlines():
+        x = x.split(":")
+        dict[x[0]] = x[1]
+
+
+userName = input("Enter username here\n: ").strip(" ")
+
+if userName == "":
+    highScore = 0
+
+#runGame(Game(highScore))

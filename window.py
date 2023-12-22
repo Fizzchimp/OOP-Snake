@@ -1,4 +1,5 @@
 import turtle
+import tkinter as tk
 
 class Window:
 
